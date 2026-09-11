@@ -1,5 +1,8 @@
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+
+import java.util.List;
+
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 public class OAuth {
@@ -24,6 +27,21 @@ public class OAuth {
 		.when().get("getCourseDetails").as(GetCourse.class);
 		
 		System.out.println(gc.getLinkedIn());
+		
+		List<Api> api=gc.getCourses().getApi();
+		
+		for(int i=0;i<api.size();i++) {
+			
+			if(api.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Webservices testing")) {
+				System.out.println(api.get(i).getPrice());
+			}
+		}
+		
+		List<WebAutomation> webAuto=gc.getCourses().getWebAutomation();
+		
+		for(int i=0;i<webAuto.size();i++) {
+			System.out.println(webAuto.get(i).getCourseTitle());
+		}
 	}
 
 }
