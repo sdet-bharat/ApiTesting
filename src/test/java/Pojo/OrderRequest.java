@@ -1,0 +1,17 @@
+package Pojo;
+
+import java.util.List;
+
+public class OrderRequest {
+		List<Orders> orders;
+	
+		public List<Orders> getOrders() {
+			return orders;
+		}
+	
+		public void setOrders(List<Orders> orders) {
+			this.orders = orders;
+		}
+	
+	
+}
